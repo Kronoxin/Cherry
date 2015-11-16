@@ -6,13 +6,13 @@
 
 
 #include "Grafo.h"
-#include "Grafo.cpp"
 
 int main()
 {
-    std::string fichero = "grafo10.txt";
+    std::string fichero = "Grafos/Ejercicio10.txt";
     Grafo grafo = Grafo(fichero);
     
+    grafo.print();
     std::cout << "hola";
     
     return 0;

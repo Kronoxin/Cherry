@@ -35,8 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Ejercicio10.o \
-	${OBJECTDIR}/Grafo.o
+	${OBJECTDIR}/Grafos/Ejercicio10.o \
+	${OBJECTDIR}/Grafos/Grafo.o
 
 
 # C Compiler Flags
@@ -63,15 +63,15 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cherry.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cherry ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/Ejercicio10.o: Ejercicio10.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/Grafos/Ejercicio10.o: Grafos/Ejercicio10.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Grafos
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Ejercicio10.o Ejercicio10.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Grafos/Ejercicio10.o Grafos/Ejercicio10.cpp
 
-${OBJECTDIR}/Grafo.o: Grafo.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/Grafos/Grafo.o: Grafos/Grafo.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Grafos
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Grafo.o Grafo.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Grafos/Grafo.o Grafos/Grafo.cpp
 
 # Subprojects
 .build-subprojects:
