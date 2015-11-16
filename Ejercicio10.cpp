@@ -12,8 +12,7 @@ int main()
     Grafo grafo = Grafo(fichero);
     
     
-    grafo.print();
-    
+    grafo.print();   
     std::cout << "hola";
     
     return 0;
