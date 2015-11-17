@@ -53,7 +53,7 @@ private:
                 if (w != p) 
                 {
                     if(!marked[w])
-                        dfsAux(G,w,marked,count,p,hayCiclo);
+                        dfsAux(G,w,marked,count,v,hayCiclo);
                     else
                         hayCiclo = true;
                 }
@@ -70,28 +70,6 @@ private:
         return count;
 
     }
-    /*
-    void grafoCiclico(const Grafo &g,int v, int p, bool &hayCiclo, std::unordered_map<int,bool> &visitados)
-    {
-        
-        if (!hayCiclo)
-        {
-            for (auto w : g.adj(v))
-            {
-                if (w != p)
-                {
-                    hayCiclo = visitados.find(w) != visitados.end();
-                    if (!hayCiclo)
-                    {
-                        grafoCiclico(g,w,v,hayCiclo);
-                    }
-                }
-            }
-        }
-        
-        
-    }
-    */
 };
 
 
