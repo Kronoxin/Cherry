@@ -7,7 +7,7 @@
 #include "ArbolBipartito.h"
 #include "Grafo.h"
 
-bool resuelveCaso() 
+bool resuelveCaso()
 {
     size_t V, A, v, w;
     std::cin >> V; // número de vértices
@@ -16,7 +16,7 @@ bool resuelveCaso()
     std::cin >> A; // número de aristas
     Grafo grafo(V);
     // leemos las aristas
-    for (int i = 0; i < A; ++i) 
+    for (int i = 0; i < A; ++i)
     {
         std::cin >> v >> w;
         grafo.ponArista(v,w);
