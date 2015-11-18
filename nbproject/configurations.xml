@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="Grafos" projectFiles="true">
+        <itemPath>Grafos/ArbolBipartito.h</itemPath>
         <itemPath>Grafos/ArbolLibre.h</itemPath>
         <itemPath>Grafos/Grafo.h</itemPath>
       </logicalFolder>
@@ -14,6 +15,7 @@
                    projectFiles="true">
       <logicalFolder name="f1" displayName="Grafos" projectFiles="true">
         <itemPath>Grafos/Ejercicio10.txt</itemPath>
+        <itemPath>Grafos/Ejercicio11.txt</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
@@ -21,6 +23,7 @@
                    projectFiles="true">
       <logicalFolder name="f1" displayName="Grafos" projectFiles="true">
         <itemPath>Grafos/Ejercicio10.cpp</itemPath>
+        <itemPath>Grafos/Ejercicio11.cpp</itemPath>
         <itemPath>Grafos/Grafo.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -64,11 +67,17 @@
           <standard>8</standard>
         </ccTool>
       </compileType>
+      <item path="Grafos/ArbolBipartito.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Grafos/ArbolLibre.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/Ejercicio10.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Grafos/Ejercicio10.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio11.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio11.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/Grafo.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -95,11 +104,17 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Grafos/ArbolBipartito.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Grafos/ArbolLibre.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/Ejercicio10.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Grafos/Ejercicio10.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio11.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio11.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/Grafo.cpp" ex="false" tool="1" flavor2="0">
       </item>
