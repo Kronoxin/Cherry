@@ -14,8 +14,8 @@
 #ifndef ARBOLLIBRE_H
 #define ARBOLLIBRE_H
 
-#include <unordered_map>
 #include "Grafo.h"
+#include <vector>
 
 class ArbolLibre{
     
@@ -40,11 +40,12 @@ public:
     
 private:
     
-    void dfsAux(Grafo const& G, size_t v,bool marked[],size_t &count,int p, bool &hayCiclo) 
+    void dfsAux(Grafo const& G, size_t v,std::vector<bool> &marked,size_t &count,size_t p, bool &hayCiclo) 
     {
         if (!hayCiclo)
         {
             ++count;
+            //marked.at(v) = true;
             marked[v] = true;
             
             for (auto w : G.adj(v)) 
@@ -52,6 +53,7 @@ private:
                 
                 if (w != p) 
                 {
+                    //if(!marked.at(w))
                     if(!marked[w])
                         dfsAux(G,w,marked,count,v,hayCiclo);
                     else
@@ -63,7 +65,8 @@ private:
 
     size_t dfs(Grafo const& G, size_t v, bool & esCiclico)
     {
-        bool *marked = new bool[G.V()];
+        std::vector<bool> marked(G.V());
+      //bool *marked = new bool[G.V()];
         size_t count = 0;
         dfsAux(G,v,marked,count,v,esCiclico);
 
