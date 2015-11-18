@@ -32,6 +32,7 @@ bool resuelveCaso()
     
     return true;
 }
+
 int main()
 {
     while(resuelveCaso());
