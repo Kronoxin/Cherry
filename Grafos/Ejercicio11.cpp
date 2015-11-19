@@ -31,8 +31,10 @@ bool resuelveCaso()
     
     return true;
 }
+
+/*
 int main()
 {
     while(resuelveCaso());
     return 0;
-}
+}*/
