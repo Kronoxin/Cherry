@@ -8,7 +8,7 @@
 #include "Arborescencia.h"
 
 bool resuelveCaso()
-{
+{  
     size_t V, A, v, w;
     std::cin >> V; // número de vértices
     if (!std::cin)  // hemos terminado de procesar todos los casos

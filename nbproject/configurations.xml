@@ -12,6 +12,8 @@
         <itemPath>Grafos/GrafoDirigido.h</itemPath>
         <itemPath>Grafos/GrafoDirigidoValorado.h</itemPath>
         <itemPath>Grafos/GrafoValorado.h</itemPath>
+        <itemPath>Grafos/Manchas.h</itemPath>
+        <itemPath>Grafos/Matriz.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="HashMap" projectFiles="true">
         <itemPath>TADS/Exceptions.h</itemPath>
@@ -27,13 +29,14 @@
         <itemPath>Grafos/Ejercicio11.txt</itemPath>
         <itemPath>Grafos/Ejercicio12.txt</itemPath>
         <itemPath>Grafos/Ejercicio13.txt</itemPath>
+        <itemPath>Grafos/Ejercicio14.txt</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="Grafos" projectFiles="true">
-        <itemPath>Grafos/Ejercicio12.cpp</itemPath>
+        <itemPath>Grafos/Ejercicio14.cpp</itemPath>
         <itemPath>Grafos/Grafo.cpp</itemPath>
         <itemPath>Grafos/GrafoDirigido.cpp</itemPath>
       </logicalFolder>
@@ -69,7 +72,7 @@
   <confs>
     <conf name="Debug" type="1">
       <toolsSet>
-        <compilerSet>GNU|GNU</compilerSet>
+        <compilerSet>MinGW|MinGW</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
@@ -88,11 +91,13 @@
       </item>
       <item path="Grafos/Ejercicio11.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Grafos/Ejercicio12.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="Grafos/Ejercicio12.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/Ejercicio13.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio14.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio14.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/Grafo.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -105,6 +110,10 @@
       <item path="Grafos/GrafoDirigidoValorado.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/GrafoValorado.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Manchas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Matriz.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="TADS/Exceptions.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -143,11 +152,13 @@
       </item>
       <item path="Grafos/Ejercicio11.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Grafos/Ejercicio12.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="Grafos/Ejercicio12.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/Ejercicio13.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio14.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio14.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/Grafo.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -160,6 +171,10 @@
       <item path="Grafos/GrafoDirigidoValorado.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/GrafoValorado.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Manchas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Matriz.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="TADS/Exceptions.h" ex="false" tool="3" flavor2="0">
       </item>
