@@ -33,11 +33,14 @@ bool resuelveCaso()
     {
         for(int j = 0; j < co; j++)
         { 
-            std::cin >> c;
+            // de esta forma leo todo, espacios en blanco, saltos de linea, etc.
+            std::cin.get(c);
             if(c == '#')
-                (mapa.at(i)).at(j) = true;
-            else
-                (mapa.at(i)).at(j) = false;
+                std::cout << "Leo #" << std::endl;
+                //(mapa.at(i)).at(j) = true;
+            else if(c == ' ')
+                std::cout << "Leo ' '" << std::endl;
+                //(mapa.at(i)).at(j) = false;
         }
         
     }
