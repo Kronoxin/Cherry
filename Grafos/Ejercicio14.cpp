@@ -19,7 +19,6 @@ struct mancha{
 
 bool resuelveCaso()
 {  
-    std::vector<std::vector<bool>> mapa;
     
     size_t f, co;
     char c;
@@ -29,18 +28,21 @@ bool resuelveCaso()
         return false;
     
     std::cin >> co; // número de columnas
+    
+    std::vector<std::vector<bool>> mapa(f, std::vector<bool>(co));
     for(int i = 0; i < f; i++)
     {
         for(int j = 0; j < co; j++)
         { 
             // de esta forma leo todo, espacios en blanco, saltos de linea, etc.
-            std::cin.get(c);
+            std::cin >> std::noskipws >> c;
             if(c == '#')
-                std::cout << "Leo #" << std::endl;
-                //(mapa.at(i)).at(j) = true;
+                mapa[i][j] = true;
             else if(c == ' ')
-                std::cout << "Leo ' '" << std::endl;
-                //(mapa.at(i)).at(j) = false;
+                mapa[i][j] = false;
+            else
+                j--;
+
         }
         
     }

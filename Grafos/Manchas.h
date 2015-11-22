@@ -23,18 +23,19 @@ private:
     
     unsigned int _nComponentesConexas;
     unsigned int _mayorNumeroManchas;
-    std::vector<int> _numeroManchasPorComponente;
-
+    std::vector<int> _numeroManchasPorComponente = std::vector<int>(50);
+    
     
 public:
     
     Manchas(const std::vector<std::vector<bool>> &m, unsigned int f, unsigned int c)
     {
+
         _nComponentesConexas = 0;
         _mayorNumeroManchas = 0;
         
         Grafo g = generaGrafoDeMapa(m,f,c);
-        cuentaManchas(g);
+        cuentaManchas(g,m,c);
     }
     
     unsigned int mayorNumeroManchas()
@@ -84,13 +85,13 @@ private:
         
     
 
-    void cuentaManchas(Grafo const& G)
+    void cuentaManchas(Grafo const& G,const std::vector<std::vector<bool>> &m,int c)
     {
         std::vector<bool> marked(G.V());
         
         for (unsigned int i = 0; i < G.V(); i++)
         {
-            if (!marked[i])
+            if (!marked[i] && m[i/c][i%c])
             {
                 size_t count = 0;
                 dfsAux(G,i,marked,count);
