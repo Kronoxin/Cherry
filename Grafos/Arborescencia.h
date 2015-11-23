@@ -37,10 +37,11 @@ public:
         _esArborescencia = false;
         _esCiclico = false;
         
+        
         if(_raiz >= 0)
         {
-            dfs(g,_raiz,_esCiclico);
-            _esArborescencia = !_esCiclico;
+            int count = dfs(g,_raiz,_esCiclico);
+            _esArborescencia = !_esCiclico && count == g.V();
         }
         
     }
@@ -64,11 +65,11 @@ private:
             
             for (auto w : G.adj(v))
             {
-                if(!marked[w])
-                    dfsAux(G,w,marked,v,hayCiclo);
-                else
-                    hayCiclo = true;
-                }
+                
+                    if(!marked[w])
+                        dfsAux(G,w,marked,count,v,hayCiclo);
+                    else
+                        hayCiclo = true;
             }
     }
     

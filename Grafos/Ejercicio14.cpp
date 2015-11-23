@@ -11,41 +11,42 @@
 #include "Grafo.h"
 #include "Manchas.h"
 
-struct mancha{
-    unsigned int x;
-    unsigned int y;
-    bool negra;
-};
-
 bool resuelveCaso()
-{  
-    
-    size_t f, co;
-    char c;
+{
+       
+    unsigned int f, co;
     
     std::cin >> f; // número de filas
+    char c;
+    
     if (!std::cin)  // hemos terminado de procesar todos los casos
         return false;
     
     std::cin >> co; // número de columnas
     
-    std::vector<std::vector<bool>> mapa(f, std::vector<bool>(co));
+    Matriz<bool> mapa = Matriz<bool>(f,co);
+    
+    std::cin.get(c);
+    
     for(int i = 0; i < f; i++)
     {
         for(int j = 0; j < co; j++)
-        { 
+        {
             // de esta forma leo todo, espacios en blanco, saltos de linea, etc.
-            std::cin >> std::noskipws >> c;
+            std::cin.get(c);
             if(c == '#')
                 mapa[i][j] = true;
             else if(c == ' ')
                 mapa[i][j] = false;
             else
                 j--;
-
+            
         }
+        std::cin.get(c);
         
     }
+    
+    
     
     Manchas m = Manchas(mapa,f,co);
     std::cout << m.mayorNumeroManchas() << "\n";

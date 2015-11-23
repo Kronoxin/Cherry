@@ -15,6 +15,7 @@
 #define MANCHAS_H
 
 #include "Grafo.h"
+#include "Matriz.h"
 
 class Manchas
 {
@@ -23,16 +24,17 @@ private:
     
     unsigned int _nComponentesConexas;
     unsigned int _mayorNumeroManchas;
-    std::vector<int> _numeroManchasPorComponente = std::vector<int>(50);
-    
+    std::vector<unsigned int> _numeroManchasPorComponente;
+
     
 public:
     
-    Manchas(const std::vector<std::vector<bool>> &m, unsigned int f, unsigned int c)
+    Manchas(const Matriz<bool> &m, unsigned int f, unsigned int c)
     {
-
         _nComponentesConexas = 0;
         _mayorNumeroManchas = 0;
+        
+        _numeroManchasPorComponente = std::vector<unsigned int> (f*c);
         
         Grafo g = generaGrafoDeMapa(m,f,c);
         cuentaManchas(g,m,c);
@@ -44,7 +46,7 @@ public:
     }
 private:
     
-    Grafo generaGrafoDeMapa(const std::vector<std::vector<bool>> &m, unsigned int f, unsigned int c)
+    Grafo generaGrafoDeMapa(const Matriz<bool> &m, unsigned int f, unsigned int c)
     {
         Grafo g = Grafo(f*c);
              
@@ -85,7 +87,7 @@ private:
         
     
 
-    void cuentaManchas(Grafo const& G,const std::vector<std::vector<bool>> &m,int c)
+    void cuentaManchas(Grafo const& G,const Matriz<bool> &m,int c)
     {
         std::vector<bool> marked(G.V());
         
@@ -95,7 +97,7 @@ private:
             {
                 size_t count = 0;
                 dfsAux(G,i,marked,count);
-                _numeroManchasPorComponente[_nComponentesConexas] = count;
+                _numeroManchasPorComponente.at(_nComponentesConexas) = count;
                 
                 if (count > _mayorNumeroManchas)
                     _mayorNumeroManchas = count;
