@@ -4,10 +4,7 @@
  * and open the template in the editor.
  */
 
-/*
-     bool mapa[][];
-    std::vector<bool> mapa;
- */
+
 #include "Grafo.h"
 #include "Manchas.h"
 
@@ -45,7 +42,6 @@ bool resuelveCaso()
         std::cin.get(c);
         
     }
-    
     
     
     Manchas m = Manchas(mapa,f,co);
