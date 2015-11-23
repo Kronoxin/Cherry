@@ -13,6 +13,7 @@
         <itemPath>Grafos/GrafoDirigidoValorado.h</itemPath>
         <itemPath>Grafos/GrafoValorado.h</itemPath>
         <itemPath>Grafos/Manchas.h</itemPath>
+        <itemPath>Grafos/ManchasCrecientes.h</itemPath>
         <itemPath>Grafos/Matriz.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="HashMap" projectFiles="true">
@@ -30,6 +31,7 @@
         <itemPath>Grafos/Ejercicio12.txt</itemPath>
         <itemPath>Grafos/Ejercicio13.txt</itemPath>
         <itemPath>Grafos/Ejercicio14.txt</itemPath>
+        <itemPath>Grafos/Ejercicio15.txt</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
@@ -99,6 +101,8 @@
       </item>
       <item path="Grafos/Ejercicio14.txt" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Grafos/Ejercicio15.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Grafos/Grafo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Grafos/Grafo.h" ex="false" tool="3" flavor2="0">
@@ -112,6 +116,8 @@
       <item path="Grafos/GrafoValorado.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/Manchas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/ManchasCrecientes.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/Matriz.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -160,6 +166,8 @@
       </item>
       <item path="Grafos/Ejercicio14.txt" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Grafos/Ejercicio15.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Grafos/Grafo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Grafos/Grafo.h" ex="false" tool="3" flavor2="0">
@@ -173,6 +181,8 @@
       <item path="Grafos/GrafoValorado.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/Manchas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/ManchasCrecientes.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/Matriz.h" ex="false" tool="3" flavor2="0">
       </item>

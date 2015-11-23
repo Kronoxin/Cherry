@@ -55,11 +55,7 @@ bool resuelveCaso()
         m.actualizarManchas(fila-1,columna-1);
         std::cout << m.mayorNumeroManchas() << "\n";
     }
-    
-    
-    
-    
-    
+
     return true;
 }
 int main()
