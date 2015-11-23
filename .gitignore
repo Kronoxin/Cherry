@@ -4,6 +4,7 @@ dist/*
 build/*
 
 # ficheros de compilacion, conflicto Mac OS X - Windows
+nbproject/private/private.xml
 nbproject/Makefile-Debug.mk
 nbproject/Makefile-Release.mk
 nbproject/Makefile-variables.mk
