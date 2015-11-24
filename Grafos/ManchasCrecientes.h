@@ -53,7 +53,7 @@ public:
         return _mayorNumeroManchas;
     }
     
-    void actualizarManchas(unsigned int i, unsigned int j)
+    void actualizarManchas(int i,int j)
     {
         // Si no hay una mancha en esa posicion ya.
         if (!_mapa[i][j])
@@ -123,8 +123,8 @@ private:
             
             for (auto w : G.adj(v)) 
             {
-                    if(!marked[w])
-                        dfsAux(G,w,marked,count);
+                if(!marked[w])
+                    dfsAux(G,w,marked,count);
           
             }
     }

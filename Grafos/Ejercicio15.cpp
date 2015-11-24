@@ -9,11 +9,9 @@
 
 bool resuelveCaso()
 {
-    
-    unsigned int f, co;
+   unsigned int f, co;
     
     std::cin >> f; // número de filas
-    char c;
     
     if (!std::cin)  // hemos terminado de procesar todos los casos
         return false;
@@ -22,24 +20,18 @@ bool resuelveCaso()
     
     Matriz<bool> mapa = Matriz<bool>(f,co);
     
-    std::cin.get(c);
+    //Ignoramos el \n
+    std::cin.ignore();
     
+    std::string linea;
     for(int i = 0; i < f; i++)
     {
+        std::getline(std::cin,linea);
+        
         for(int j = 0; j < co; j++)
         {
-            // de esta forma leo todo, espacios en blanco, saltos de linea, etc.
-            std::cin.get(c);
-            if(c == '#')
-                mapa[i][j] = true;
-            else if(c == ' ')
-                mapa[i][j] = false;
-            else
-                j--;
-            
+            mapa[i][j] = (linea[j] == '#'); 
         }
-        std::cin.get(c);
-        
     }
     
     ManchasCrecientes m = ManchasCrecientes(mapa,f,co);
@@ -49,7 +41,7 @@ bool resuelveCaso()
     std::cin >> inserciones;
     for (unsigned int i = 0; i < inserciones; i++)
     {
-        unsigned int fila,columna;
+        int fila,columna;
         std::cin >> fila;
         std::cin >> columna;
         m.actualizarManchas(fila-1,columna-1);

@@ -38,7 +38,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="Grafos" projectFiles="true">
-        <itemPath>Grafos/Ejercicio14.cpp</itemPath>
+        <itemPath>Grafos/Ejercicio15.cpp</itemPath>
         <itemPath>Grafos/Grafo.cpp</itemPath>
         <itemPath>Grafos/GrafoDirigido.cpp</itemPath>
       </logicalFolder>
@@ -97,9 +97,9 @@
       </item>
       <item path="Grafos/Ejercicio13.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Grafos/Ejercicio14.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="Grafos/Ejercicio14.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio15.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Grafos/Ejercicio15.txt" ex="false" tool="3" flavor2="0">
       </item>
@@ -162,9 +162,9 @@
       </item>
       <item path="Grafos/Ejercicio13.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Grafos/Ejercicio14.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="Grafos/Ejercicio14.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio15.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Grafos/Ejercicio15.txt" ex="false" tool="3" flavor2="0">
       </item>
