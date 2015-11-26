@@ -47,7 +47,7 @@ void relax(AristaDirigida<int> e, std::vector<int> &distTo, std::vector<AristaDi
 
 void dijkstraSP(GrafoDirigidoValorado<int> G, int s){
     
-    //No funciona compila con esto porque no hay constructor vacío para la AristaDirigida
+    //No compila con esto porque no hay constructor vacío para la AristaDirigida
     std::vector<AristaDirigida<int>> edgeTo(G.V());
     
     std::vector<int> distTo(G.V());
