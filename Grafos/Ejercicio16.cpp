@@ -9,7 +9,8 @@
 #include "GrafoValorado.h"
 #include "IndexPQ.h"
 #include <vector>
-/*
+#include <limits>
+
 bool contains(IndexPQ<int> pq, int elem)
 {
     bool exist = false;
@@ -66,8 +67,13 @@ int primMST(GrafoValorado<int> G)
         visit(G, a,marked,edgeTo,distTo,pq);       // Add closest vertex to tree.
     }
     int resultado = 0;
+    
+    //Si en el vector de marcados algun vértice es false, no es conexo, por lo tanto, imposible.
     for (int i = 0; i < G.V(); i++)
-        resultado += distTo[i];
+        if(marked[i]==true)
+            resultado += distTo[i];
+        else
+            return 0;
     
 
     return resultado;
@@ -94,8 +100,13 @@ bool resuelveCaso()
         Arista<int>arista = Arista<int>(v-1,w-1,c);
         grafo.ponArista(arista);
     }
-    
-    std::cout << primMST(grafo);
+    if(primMST(grafo)>0){
+         std::cout << primMST(grafo)<<"\n";
+    }
+    else{
+        std::cout<<"Imposible\n";
+    }
+   
 
     return true;
 
@@ -104,4 +115,4 @@ int main()
 {
     while(resuelveCaso());
     return 0;
-}*/
+}
