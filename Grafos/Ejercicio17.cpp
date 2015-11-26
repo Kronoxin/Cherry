@@ -8,6 +8,7 @@
 
 #include "IndexPQ.h"
 #include "GrafoDirigidoValorado.h"
+#include "GrafoValorado.h"
 #include <vector>
 #include <limits>
 // E LOG V
@@ -45,8 +46,10 @@ void relax(AristaDirigida<int> e, std::vector<int> &distTo, std::vector<AristaDi
 
 
 void dijkstraSP(GrafoDirigidoValorado<int> G, int s){
-
-    std::vector<AristaDirigida<int>> edgeTo;
+    
+    //No funciona compila con esto porque no hay constructor vacío para la AristaDirigida
+    std::vector<AristaDirigida<int>> edgeTo(G.V());
+    
     std::vector<int> distTo(G.V());
     std::vector<bool> marked(G.V());
     IndexPQ<int> pq(G.V());
@@ -72,7 +75,8 @@ void dijkstraSP(GrafoDirigidoValorado<int> G, int s){
 bool resuelveCaso()
 {
     size_t V, A, v, w;
-    int c;
+    int c, s, nPaquetes;
+    
     std::cin >> V; // número de vértices
     if (!std::cin)  // hemos terminado de procesar todos los casos
         return false;
@@ -85,8 +89,17 @@ bool resuelveCaso()
         AristaDirigida<int> arista = AristaDirigida<int> (v-1,w-1,c);
         grafo.ponArista(arista);
     }
+    //leemos el inicio/fin
+    std::cin >> s;
+    //el numero de paquetes.
+    std::cin >> nPaquetes;
+    std::vector<int> destinos(nPaquetes);
     
-    
+    int des;
+    for (int i = 0; i < nPaquetes; ++i){
+        std::cin >> des;
+        destinos[i]=des;
+    }
     
     return true;
     
