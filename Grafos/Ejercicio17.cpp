@@ -8,6 +8,8 @@
 
 #include "IndexPQ.h"
 #include "GrafoDirigidoValorado.h"
+#include <vector>
+#include <limits>
 // E LOG V
 
 bool contains(IndexPQ<int> pq, int elem)
@@ -26,7 +28,7 @@ bool contains(IndexPQ<int> pq, int elem)
 
 
 
-void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDirigida<int>> &edgeTo,IndexPQ<int> &pq)
+void relax(AristaDirigida<int> e, std::vector<int> &distTo, std::vector<AristaDirigida<int>> &edgeTo, IndexPQ<int> &pq)
 {
     int v = e.from(), w = e.to();
     if (distTo[w] > distTo[v] + e.valor())
@@ -44,7 +46,7 @@ void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDiri
 
 void dijkstraSP(GrafoDirigidoValorado<int> G, int s){
 
-    std::vector<AristaDirigida<int>> edgeTo(G.V());
+    std::vector<AristaDirigida<int>> edgeTo;
     std::vector<int> distTo(G.V());
     std::vector<bool> marked(G.V());
     IndexPQ<int> pq(G.V());
@@ -67,9 +69,6 @@ void dijkstraSP(GrafoDirigidoValorado<int> G, int s){
 }
 
 
-
-
-
 bool resuelveCaso()
 {
     size_t V, A, v, w;
@@ -83,7 +82,7 @@ bool resuelveCaso()
     for (int i = 0; i < A; ++i)
     {
         std::cin >> v >> w >> c;
-        AristaDirigida<int>arista = AristaDirigida<int>(v,w,c);
+        AristaDirigida<int> arista = AristaDirigida<int> (v-1,w-1,c);
         grafo.ponArista(arista);
     }
     

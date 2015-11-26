@@ -19,7 +19,6 @@ bool contains(IndexPQ<int> pq, int elem)
     {
         if((copia.top()).elem == elem)
             exist = true;
-        
         copia.pop();
     }
     return exist;
@@ -107,7 +106,6 @@ bool resuelveCaso()
         std::cout<<"Imposible\n";
     }
    
-
     return true;
 
 }
