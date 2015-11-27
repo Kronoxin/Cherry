@@ -34,6 +34,9 @@
         <itemPath>Grafos/Ejercicio14.txt</itemPath>
         <itemPath>Grafos/Ejercicio15.txt</itemPath>
       </logicalFolder>
+      <logicalFolder name="f2" displayName="Voraces" projectFiles="true">
+        <itemPath>Voraces/Ejercicio19.txt</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -132,6 +135,8 @@
       </item>
       <item path="Voraces/Ejercicio19.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="Voraces/Ejercicio19.txt" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
@@ -198,6 +203,8 @@
       <item path="TADS/HashMap.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Voraces/Ejercicio19.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Voraces/Ejercicio19.txt" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
