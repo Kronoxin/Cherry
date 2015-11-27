@@ -11,7 +11,7 @@
 #include <vector>
 #include <limits>
 
-/*
+
 void visit(const GrafoValorado<int> &G, int v,std::vector<bool> &marked,std::vector<Arista<int>> &edgeTo,std::vector<int> &distTo,IndexPQ<int> &pq){
 
     marked[v] = true;
@@ -31,7 +31,7 @@ void visit(const GrafoValorado<int> &G, int v,std::vector<bool> &marked,std::vec
              * Si se hace push y salta la excepción es porque existe
              * Entonces, hacemos el update
              */
-/*
+
             try {
                 pq.push(w, distTo[w]);
             } catch (std::invalid_argument) {
@@ -110,4 +110,4 @@ int main()
 {
     while(resuelveCaso());
     return 0;
-}*/
+}

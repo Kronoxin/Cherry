@@ -1,3 +1,11 @@
+//
+//  Ejercicio15.cpp
+//  Ejercicio1
+//
+//  Created by Rubén Gómez on 23/11/15.
+//  Copyright © 2015 Rubén Gómez. All rights reserved.
+//
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,10 +14,13 @@
 
 #include "Grafo.h"
 #include "ManchasCrecientes.h"
+ 
+ //Conjuntos disjuntos
 
 bool resuelveCaso()
 {
-   unsigned int f, co;
+    
+    unsigned int f, co;
     
     std::cin >> f; // número de filas
     
@@ -30,7 +41,7 @@ bool resuelveCaso()
         
         for(int j = 0; j < co; j++)
         {
-            mapa[i][j] = (linea[j] == '#'); 
+            mapa[i][j] = (linea[j] == '#');
         }
     }
     
@@ -45,9 +56,21 @@ bool resuelveCaso()
         std::cin >> fila;
         std::cin >> columna;
         m.actualizarManchas(fila-1,columna-1);
-        std::cout << m.mayorNumeroManchas() << "\n";
+        
+        std::cout << m.mayorNumeroManchas();
+        
+        if (i < inserciones - 1)
+            std::cout << " ";
+        else
+           std::cout << "\n";
     }
-
+    
+    if (inserciones == 0)
+        std::cout << "\n";
+    
+    
+    
+    
     return true;
 }
 int main()

@@ -11,14 +11,21 @@
 #include <limits>
 
 
-void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDirigida<int>> &edgeTo,IndexPQ<int> &pq,std::vector<int> &pisados)
+void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDirigida<int>> &edgeTo,IndexPQ<int> &pq,std::vector<int> &pisados, std::vector<int> &finales,int d)
 {
-    int v = e.from(), w = e.to();
+    size_t v = e.from();
+    size_t w = e.to();
     if (distTo[w] > distTo[v] + e.valor())
     {
         distTo[w] = distTo[v] + e.valor();
         edgeTo[w] = e;
         pisados[w]++;
+        
+        if (w == d)
+        {
+            finales = std::vector<int>();
+            finales.push_back(v);
+        }
         
         try
         {
@@ -27,17 +34,20 @@ void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDiri
         {
             pq.update(w, distTo[w]);
         }
-
+        
     }
     else if (distTo[w] == distTo[v] + e.valor())
+    {
         pisados[w]++;
-    
+        finales.push_back(v);
+    }
     
 }
 
 
 int dijkstraSP(GrafoDirigidoValorado<int> G, int s,std::vector<AristaDirigida<int>> &edgeTo)
 {
+    
     
     std::vector<int> pisados(G.V());;
     std::vector<int> distTo(G.V());
@@ -50,17 +60,18 @@ int dijkstraSP(GrafoDirigidoValorado<int> G, int s,std::vector<AristaDirigida<in
     distTo[s] = 0.0;
     pq.push(s, 0.0);
     
+    std::vector<int> finales;
     while (!pq.empty())
     {
         int v = (pq.top()).elem;
         pq.pop();
         for (auto e : G.adj(v))
-            relax(e,distTo,edgeTo,pq,pisados);
+            relax(e,distTo,edgeTo,pq,pisados,finales,G.V()-1);
     }
     int nCaminos = 0;
     
-    for (auto e : G.adj(G.V()-1))
-        nCaminos += pisados[e.to()];
+    for (auto b : finales)
+        nCaminos += pisados[b];
     
     return nCaminos;
     
@@ -89,17 +100,21 @@ bool resuelveCaso()
         AristaDirigida<int>aristaDos = AristaDirigida<int>(w-1,v-1,c);
         grafo.ponArista(aristaUno);
         grafo.ponArista(aristaDos);
-        edgeTo.push_back(aristaUno);
-        edgeTo.push_back(aristaDos);
+        
+      //  edgeTo.push_back(aristaUno);
+       // edgeTo.push_back(aristaDos);
+    }
+    for (int a = 0; a < grafo.V(); a++)
+    {
+        AristaDirigida<int> b (0,0,0);
+        edgeTo.push_back(b);
     }
     
     int numeroCaminos = 0;
     numeroCaminos = dijkstraSP(grafo, 0,edgeTo);
     
-    if (numeroCaminos > 0)
-        std::cout << numeroCaminos << "\n";
-    else
-        std::cout << "0\n";
+    std::cout << numeroCaminos << "\n";
+    
     return true;
     
 }

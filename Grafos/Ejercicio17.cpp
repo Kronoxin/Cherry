@@ -5,7 +5,7 @@
 //  Created by Rubén Gómez on 25/11/15.
 //  Copyright © 2015 Rubén Gómez. All rights reserved.
 //
-/*
+
 #include "IndexPQ.h"
 #include "GrafoDirigidoValorado.h"
 // E LOG V
@@ -115,4 +115,4 @@ int main()
 {
     while(resuelveCaso());
     return 0;
-}*/
+}
