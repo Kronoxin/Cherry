@@ -11,21 +11,9 @@
 #include <vector>
 #include <limits>
 
-bool contains(IndexPQ<int> pq, int elem)
-{
-    bool exist = false;
-    IndexPQ<int> copia = pq;
-    while (!copia.empty())
-    {
-        if((copia.top()).elem == elem)
-            exist = true;
-        copia.pop();
-    }
-    return exist;
-}
+/*
+void visit(const GrafoValorado<int> &G, int v,std::vector<bool> &marked,std::vector<Arista<int>> &edgeTo,std::vector<int> &distTo,IndexPQ<int> &pq){
 
-void visit(const GrafoValorado<int> &G, int v,std::vector<bool> &marked,std::vector<Arista<int>> &edgeTo,std::vector<int> &distTo,IndexPQ<int> &pq)
-{  // Add v to tree; update data structures.
     marked[v] = true;
     for (auto e : G.adj(v))
     {
@@ -38,10 +26,17 @@ void visit(const GrafoValorado<int> &G, int v,std::vector<bool> &marked,std::vec
             edgeTo[w] = e;
             distTo[w] = e.valor();
             
-            if (contains(pq,w))
-                pq.update(w, distTo[w]);
-            else
+            /*
+             Hacemos el try-catch porque el "contains" se está comprobando al hacer el push
+             * Si se hace push y salta la excepción es porque existe
+             * Entonces, hacemos el update
+             */
+/*
+            try {
                 pq.push(w, distTo[w]);
+            } catch (std::invalid_argument) {
+                pq.update(w, distTo[w]);
+            }
         }
     }
 }
@@ -66,13 +61,15 @@ int primMST(GrafoValorado<int> G)
         visit(G, a,marked,edgeTo,distTo,pq);       // Add closest vertex to tree.
     }
     int resultado = 0;
+
     
-    //Si en el vector de marcados algun vértice es false, no es conexo, por lo tanto, imposible.
-    for (int i = 0; i < G.V(); i++)
+    for (int i = 0; i < G.V(); i++){
         if(marked[i]==true)
             resultado += distTo[i];
         else
             return 0;
+    }
+
     
 
     return resultado;
@@ -99,13 +96,13 @@ bool resuelveCaso()
         Arista<int>arista = Arista<int>(v-1,w-1,c);
         grafo.ponArista(arista);
     }
+    
     if(primMST(grafo)>0){
-         std::cout << primMST(grafo)<<"\n";
+        std::cout<<primMST(grafo)<<"\n";
     }
-    else{
+    else
         std::cout<<"Imposible\n";
-    }
-   
+
     return true;
 
 }
@@ -113,4 +110,4 @@ int main()
 {
     while(resuelveCaso());
     return 0;
-}
+}*/
