@@ -8,17 +8,17 @@
 
 #include "IndexPQ.h"
 #include "GrafoDirigidoValorado.h"
+#include <limits>
 
 
-void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDirigida<int>> &edgeTo,IndexPQ<int> &pq,int d,int &nCaminos)
+void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDirigida<int>> &edgeTo,IndexPQ<int> &pq,std::vector<int> &pisados)
 {
     int v = e.from(), w = e.to();
     if (distTo[w] > distTo[v] + e.valor())
     {
         distTo[w] = distTo[v] + e.valor();
         edgeTo[w] = e;
-        if (w==d)
-            nCaminos++;
+        pisados[w]++;
         
         try
         {
@@ -29,18 +29,18 @@ void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDiri
         }
 
     }
-    else if (distTo[w] == distTo[v] + e.valor() && w==d)
-        nCaminos++;
+    else if (distTo[w] == distTo[v] + e.valor())
+        pisados[w]++;
     
     
 }
 
 
-int dijkstraSP(GrafoDirigidoValorado<int> G, int s,std::vector<AristaDirigida<int>> &edgeTo, int des){
+int dijkstraSP(GrafoDirigidoValorado<int> G, int s,std::vector<AristaDirigida<int>> &edgeTo)
+{
     
-    int nCaminos=0;
+    std::vector<int> pisados(G.V());;
     std::vector<int> distTo(G.V());
-    std::vector<bool> marked(G.V());
     IndexPQ<int> pq(G.V());
     
     
@@ -55,8 +55,12 @@ int dijkstraSP(GrafoDirigidoValorado<int> G, int s,std::vector<AristaDirigida<in
         int v = (pq.top()).elem;
         pq.pop();
         for (auto e : G.adj(v))
-            relax(e,distTo,edgeTo,pq,des,nCaminos);
+            relax(e,distTo,edgeTo,pq,pisados);
     }
+    int nCaminos = 0;
+    
+    for (auto e : G.adj(G.V()-1))
+        nCaminos += pisados[e.to()];
     
     return nCaminos;
     
@@ -90,7 +94,7 @@ bool resuelveCaso()
     }
     
     int numeroCaminos = 0;
-    numeroCaminos = dijkstraSP(grafo, 0,edgeTo,grafo.V()-1);
+    numeroCaminos = dijkstraSP(grafo, 0,edgeTo);
     
     if (numeroCaminos > 0)
         std::cout << numeroCaminos << "\n";
