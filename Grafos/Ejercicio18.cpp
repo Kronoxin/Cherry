@@ -38,12 +38,10 @@ void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDiri
 
 int dijkstraSP(GrafoDirigidoValorado<int> G, int s,std::vector<AristaDirigida<int>> &edgeTo)
 {
-    
-    
+
     std::vector<int> pisados(G.V());;
     std::vector<int> distTo(G.V());
     IndexPQ<int> pq(G.V());
-    
     
     for (int v = 0; v < G.V(); v++)
         distTo[v] = std::numeric_limits<int>::max();
@@ -58,18 +56,24 @@ int dijkstraSP(GrafoDirigidoValorado<int> G, int s,std::vector<AristaDirigida<in
         for (auto e : G.adj(v))
             relax(e,distTo,edgeTo,pq,pisados,G.V()-1);
     }
+    
     int nCaminos = 1;
-    for (int b = 0 ; b < pisados.size(); b++){
-        if(pisados[b] > 1)
-            nCaminos *= pisados[b];
+
+    //Si el grafo no es conexo, no puede llegar al destino.
+    if(distTo[distTo.size()-1]== std::numeric_limits<int>::max()){
+        nCaminos = 0;
+    }
+    else{
+        for (int b = 0 ; b < pisados.size(); b++){
+            if(pisados[b] > 1)
+                nCaminos *= pisados[b];
+        }
+        
     }
     
     return nCaminos;
     
 }
-
-
-
 
 
 bool resuelveCaso()
