@@ -5,7 +5,7 @@
 //  Created by Rubén Gómez on 25/11/15.
 //  Copyright © 2015 Rubén Gómez. All rights reserved.
 //
-
+/*
 #include "IndexPQ.h"
 #include "GrafoDirigidoValorado.h"
 #include <limits>
@@ -19,8 +19,8 @@ void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDiri
     {
         distTo[w] = distTo[v] + e.valor();
         edgeTo[w] = e;
-        pisados[w] = 1;
-        
+        pisados[w] = pisados[v];
+ 
         try
         {
             pq.push(w, distTo[w]);
@@ -31,7 +31,9 @@ void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDiri
         
     }
     else if (distTo[w] == distTo[v] + e.valor())
-        pisados[w]++;
+    {    
+        pisados[w] += pisados[v];    
+    }
     
 }
 
@@ -41,6 +43,9 @@ int dijkstraSP(GrafoDirigidoValorado<int> G, int s,std::vector<AristaDirigida<in
 
     std::vector<int> pisados(G.V());;
     std::vector<int> distTo(G.V());
+    pisados[0] = 1;
+    //std::vector<AristaDirigida<int>> edgeToFinal;
+    
     IndexPQ<int> pq(G.V());
     
     for (int v = 0; v < G.V(); v++)
@@ -63,15 +68,9 @@ int dijkstraSP(GrafoDirigidoValorado<int> G, int s,std::vector<AristaDirigida<in
     if(distTo[distTo.size()-1]== std::numeric_limits<int>::max()){
         nCaminos = 0;
     }
-    else{
-        for (int b = 0 ; b < pisados.size(); b++){
-            if(pisados[b] > 1)
-                nCaminos *= pisados[b];
-        }
-        
-    }
     
-    return nCaminos;
+    
+    return pisados[G.V()-1];
     
 }
 
@@ -110,8 +109,10 @@ bool resuelveCaso()
     return true;
     
 }
+
 int main()
 {
     while(resuelveCaso());
     return 0;
 }
+ */
