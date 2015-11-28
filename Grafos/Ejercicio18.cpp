@@ -11,7 +11,7 @@
 #include <limits>
 
 
-void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDirigida<int>> &edgeTo,IndexPQ<int> &pq,std::vector<int> &pisados, std::vector<int> &finales,int d)
+void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDirigida<int>> &edgeTo,IndexPQ<int> &pq,std::vector<int> &pisados,int d)
 {
     size_t v = e.from();
     size_t w = e.to();
@@ -19,13 +19,7 @@ void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDiri
     {
         distTo[w] = distTo[v] + e.valor();
         edgeTo[w] = e;
-        pisados[w]++;
-        
-        if (w == d)
-        {
-            finales = std::vector<int>();
-            finales.push_back(v);
-        }
+        pisados[w] = 1;
         
         try
         {
@@ -37,10 +31,7 @@ void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDiri
         
     }
     else if (distTo[w] == distTo[v] + e.valor())
-    {
         pisados[w]++;
-        finales.push_back(v);
-    }
     
 }
 
@@ -60,18 +51,18 @@ int dijkstraSP(GrafoDirigidoValorado<int> G, int s,std::vector<AristaDirigida<in
     distTo[s] = 0.0;
     pq.push(s, 0.0);
     
-    std::vector<int> finales;
     while (!pq.empty())
     {
         int v = (pq.top()).elem;
         pq.pop();
         for (auto e : G.adj(v))
-            relax(e,distTo,edgeTo,pq,pisados,finales,G.V()-1);
+            relax(e,distTo,edgeTo,pq,pisados,G.V()-1);
     }
-    int nCaminos = 0;
-    
-    for (auto b : finales)
-        nCaminos += pisados[b];
+    int nCaminos = 1;
+    for (int b = 0 ; b < pisados.size(); b++){
+        if(pisados[b] > 1)
+            nCaminos *= pisados[b];
+    }
     
     return nCaminos;
     
@@ -100,9 +91,6 @@ bool resuelveCaso()
         AristaDirigida<int>aristaDos = AristaDirigida<int>(w-1,v-1,c);
         grafo.ponArista(aristaUno);
         grafo.ponArista(aristaDos);
-        
-      //  edgeTo.push_back(aristaUno);
-       // edgeTo.push_back(aristaDos);
     }
     for (int a = 0; a < grafo.V(); a++)
     {
