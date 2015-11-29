@@ -1,63 +1,85 @@
+//  TAIS08 , Rubén Gómez y Daniel Lago
 //
-//  Ejercicio17.cpp
-//  Ejercicio1
+//  Ejercicio 17 - Repartiendo paquetes.
 //
-//  Created by Rubén Gómez on 25/11/15.
-//  Copyright © 2015 Rubén Gómez. All rights reserved.
-//
+/*
+ Resumen de solucion:
+ Implementamos el algoritmo de dijkstra.
+ Necesitamos llegar de un punto de origen a varios destinos. Los caminos de vuelta pueden ser distintos a los de ida.
+ Realizamos dijstra desde el punto de origen una vez y guardamos los resultados de las distancias minimas al resto de vertices.
+ El problema es calcular los caminos de vuelta, por tanto invertimos las aristas de forma que los caminos de vuelta ahora son caminos
+ de ida, lo que nos permite hacer dijkstra otra vez desde el origen y saber cuanto nos cuesta volver desde cada uno de los destinos.
+ La suma de las distancias a los destinos de ida y las distancias de vuelta es el coste total minimo.
+ 
+ Coste O(numero de aristas*log(numero de vertices)).
+ */
 
 #include "IndexPQ.h"
 #include "GrafoDirigidoValorado.h"
-// E LOG V
+#include <limits>
 
-
-void relax(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDirigida<int>> &edgeTo,IndexPQ<int> &pq)
+// Metodo que recorre las aristas adyacentes y selecciona aquellas que tenga un mejor coste.
+// Coste O(numero de aristas*log(numero de vertices)).
+void relajar(AristaDirigida<int> aristaActual,std::vector<int> &distTo,std::vector<AristaDirigida<int>> &aristas,IndexPQ<int> &pq)
 {
-    size_t v = e.from();
-    size_t w = e.to();
+    size_t origen = aristaActual.from();
+    size_t destino = aristaActual.to();
     
-    if (distTo[w] > distTo[v] + e.valor())
+    // Si la distancia que tiene nuestro destino mayor que lo que costaria recorrerlo a traves de nuestra arista.
+    if (distTo[destino] > distTo[origen] + aristaActual.valor())
     {
-        distTo[w] = distTo[v] + e.valor();
-        edgeTo[w] = e;
+        distTo[destino] = distTo[origen] + aristaActual.valor(); // Actualizamos la distancia.
+        aristas[destino] = aristaActual; // Actualizamos la arista seleccionada.
         
+        // Debido a que en IndexPQ no hay un metodo que compruebe si ya existe el elemento, usamos la excepcion
+        // que lanza el metodo push en caso de que exista. Si salta la excepcion invalid_argument es porque ya existe el elemento
+        // y lo actualizamos.
         try
         {
-            pq.push(w, distTo[w]);
-        } catch (std::invalid_argument)
+            pq.push(destino, distTo[destino]);
+        } 
+        catch (std::invalid_argument)
         {
-            pq.update(w, distTo[w]);
+            pq.update(destino, distTo[destino]);
         }
     }
     
 }
+// Metodo que implementa el algoritmo de dijkstra.
+// Inicializamos todos los nodos con distancia maxima excepto el nodo origen.
+// Vamos recorriendo las aristas y comprobando si la distancia por el camino actual es menor que la que habia antes y lo actualizamos.
+// Devuelve el vector de distancias.
+// Coste O(numero de aristas*log(numero de vertices)).
 
-
-std::vector<int> &dijkstraSP(GrafoDirigidoValorado<int> G, int s, std::vector<AristaDirigida<int>> &edgeTo, std::vector<int> &distTo){
+std::vector<int> &dijkstra(GrafoDirigidoValorado<int> G, int s, std::vector<AristaDirigida<int>> &aristas, std::vector<int> &distTo)
+{
 
     std::vector<bool> marked(G.V());
     IndexPQ<int> pq(G.V());
 
-
+    // Hacemos la inicializacion al maximo numero representable por un entero, debido a que los enteros no tienen una representacion de infinito.
     for (int v = 0; v < G.V(); v++)
         distTo[v] = std::numeric_limits<int>::max();
     
-    distTo[s] = 0;
-    pq.push(s, 0);
+    distTo[s] = 0; // Inicializamos el origen con distancia 0.
+    pq.push(s, 0); // Añadimos el vertice al monticulo.
     
-    while (!pq.empty())
+    while (!pq.empty()) // Mientras queden vertices.
     {
-        int v = (pq.top()).elem;
-        pq.pop();
-        for (auto e : G.adj(v))
-            relax(e,distTo,edgeTo,pq);
+        int v = (pq.top()).elem; // Cogemos el menor elemento.
+        pq.pop(); // Lo sacamos del monticulo.
+        for (auto e : G.adj(v)) // recorremos los vertices adyacentes.
+            relajar(e,distTo,aristas,pq); // Llamamos a relajar para actualizar las distancias. Coste O(numero de aristas*log(numero de vertices)).
     }
     
     return distTo;
 
 }
 
-
+// Metodo que se encarga de la resolucion del caso.
+// Recoge la entrada del usuario e inicializa las variables.
+// Hace una llamada a la implementacion de dijstra, da la vuelta a las aristas del grafo y vuelve a hacer la llamada con ese grafo.
+// Coste O(numero de aristas*log(numero de vertices)).
 
 bool resuelveCaso()
 {
@@ -69,48 +91,53 @@ bool resuelveCaso()
     std::cin >> A; // número de aristas
     GrafoDirigidoValorado<int> grafo(V);
     
-    //como no tengo constructor vacío, lo inicializo y relleno aquí, y se lo paso a dijkstra
-    std::vector<AristaDirigida<int>> edgeTo;
     
-    // leemos las aristas
+    std::vector<AristaDirigida<int>> aristas;
+    
+    // Leemos las aristas
     for (int i = 0; i < A; ++i)
     {
         std::cin >> v >> w >> c;
         AristaDirigida<int> arista = AristaDirigida<int>(v-1, w-1, c);
         grafo.ponArista(arista);
-        edgeTo.push_back(arista);
+        aristas.push_back(arista);
     }
     
-    //leemos el inicio/fin
+    // Leemos la ciudad inicial.
     std::cin >> s;
     std::vector<int> distTo(grafo.V());
-    std::vector<int> ida = dijkstraSP(grafo, s-1, edgeTo, distTo);
-    std::vector<int> vuelta = dijkstraSP(grafo.reverse(), s-1, edgeTo,distTo);
+    std::vector<int> ida = dijkstra(grafo, s-1, aristas, distTo); // Hacemos dijkstra y obtenemos la distancia desde el origen a todos los destinos.
+    // Hacemos dijkstra con el grafo inverso y obtenemos la distancia desde todos los destinos al origen. Coste O(numero de vertices + numero de aristas).
+    std::vector<int> vuelta = dijkstra(grafo.reverse(), s-1, aristas,distTo); 
     
-    //el numero de paquetes.
     std::cin >> nPaquetes;
     int esfuerzoMinimo = 0;
     int des;
     bool realizable = true;
     
-    for (int i = 0; i < nPaquetes; ++i)
+    for (int i = 0; i < nPaquetes; ++i) // Por cada paquete.
     {
         std::cin >> des;
-        if (ida[des-1] != std::numeric_limits<int>::max() && vuelta[des-1] != std::numeric_limits<int>::max())
-            esfuerzoMinimo += ida[des-1] + vuelta[des-1];
+        if (ida[des-1] != std::numeric_limits<int>::max() && vuelta[des-1] != std::numeric_limits<int>::max()) // Si se puede llegar al destino tanto de ida como de vuelta.
+            esfuerzoMinimo += ida[des-1] + vuelta[des-1]; // Calculamos el esfuerzo minimo.
         else
-            realizable = false;
+            realizable = false; // Si no se puede llegar no es realizable el trayecto.
     }
     
     if (realizable)
-        std::cout << esfuerzoMinimo << "\n";
+        std::cout << esfuerzoMinimo << "\n"; // Si el trayecto es realizable imprimimos el esfuerzo minimo.
     else
-        std::cout << "Imposible\n";
+        std::cout << "Imposible\n";         // Si no es realizable imprimimos Imposible.
     
     
     return true;
     
 }
+
+// Metodo principal, contiene un bucle que llama a la funcion resuelveCaso.
+// Esta devuelve true mientras haya casos por resolver.
+// Coste O(numero de aristas*log(numero de vertices)).
+
 int main()
 {
     while(resuelveCaso());

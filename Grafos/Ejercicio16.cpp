@@ -1,84 +1,99 @@
+//  TAIS08 , Rubén Gómez y Daniel Lago
 //
-//  Ejercicio16.cpp
-//  Ejercicio1
+//  Ejercicio 16 - Pavimentar Barro City.
 //
-//  Created by Rubén Gómez on 25/11/15.
-//  Copyright © 2015 Rubén Gómez. All rights reserved.
-//
+/*
+ Resumen de solucion:
+ Implementamos el algoritmo voraz de Prim.
+ El algoritmo de Prim realiza un arbol recubridor de coste total minimo.
+ Tras establecer el peso de las aristas con menor coste total para el arbol lo recorremos sumando los costes para cada uno de los vertices.
+ El resultado es el coste minimo necesario para conectar todos los vertices. 
+ 
+ Coste O(numero de aristas*log(numero de vertices)).
+ */
 
 #include "GrafoValorado.h"
 #include "IndexPQ.h"
 #include <vector>
 #include <limits>
 
-
-void visit(const GrafoValorado<int> &G, int v,std::vector<bool> &marked,std::vector<Arista<int>> &edgeTo,std::vector<int> &distTo,IndexPQ<int> &pq){
+// Metodo que recorre las adyacentes de un nodo y comprueba si se ha llegado por un camino mejor al nodo.
+// En ese caso selecciona la arista actual y la mete en la cola, o la actualiza si ya existe.
+// Coste O(numero de aristas*log(numero de vertices)).
+void visitar(const GrafoValorado<int> &G, int v,std::vector<bool> &marked,std::vector<int> &distancias,IndexPQ<int> &pq,std::vector<Arista<int>> &aristas){
 
     marked[v] = true;
+    // Recorremos las aristas adyacentes al vertice. Coste O(numero de aristas).
     for (auto e : G.adj(v))
     {
+        int destino = e.otro(v); // Cogemos el destino.
         
-        int w = e.otro(v);
-        
-        if (marked[w]) continue;
-        if (e.valor() < distTo[w])
-        {  // Edge e is new best connection from tree to w.
-            edgeTo[w] = e;
-            distTo[w] = e.valor();
-            
-            /*
-             Hacemos el try-catch porque el "contains" se está comprobando al hacer el push
-             * Si se hace push y salta la excepción es porque existe
-             * Entonces, hacemos el update
-             */
+        if (!marked[destino]) // Si no esta ya marcado el destino.
+        {
+            if (e.valor() < distancias[destino]) // Comprobamos si esta arista es mejor
+            {
+                aristas[destino] = e; // Como es mejor la seleccionamos.
+                distancias[destino] = e.valor(); // Ponemos el peso de la arista en el vector de distancias.
 
-            try {
-                pq.push(w, distTo[w]);
-            } catch (std::invalid_argument) {
-                pq.update(w, distTo[w]);
+                // Debido a que en IndexPQ no hay un metodo que compruebe si ya existe el elemento, usamos la excepcion
+                // que lanza el metodo push en caso de que exista. Si salta la excepcion invalid_argument es porque ya existe el elemento
+                // y lo actualizamos.
+                try 
+                {
+                    pq.push(destino, distancias[destino]);
+                } 
+                catch (std::invalid_argument) 
+                {
+                    pq.update(destino, distancias[destino]);
+                }
             }
         }
     }
 }
 
-int primMST(GrafoValorado<int> G)
+// Metodo que implementa el algoritmo de Prim.
+// Obtenemos el arbol recubridor de coste minimo y devolvemos la suma de los costes de las aristas de ese arbol.
+// Coste O(numero de aristas*log(numero de vertices)).
+
+int primVoraz(GrafoValorado<int> G)
 {
-    std::vector<Arista<int>> edgeTo(G.V());
-    std::vector<int> distTo(G.V());
+    
+    std::vector<Arista<int>> aristas(G.V());
+    std::vector<int> distancias(G.V());
     std::vector<bool> marked(G.V());
-    IndexPQ<int> pq(G.V());
+    IndexPQ<int> pq(G.V()); // Declaramos e inicializamos un monticulo clave-valor.
     
     for (int v = 0; v < G.V(); v++)
-        distTo[v] = std::numeric_limits<int>::max();
+        distancias[v] = std::numeric_limits<int>::max();
     
-    distTo[0] = 0;
-    pq.push(0, 0);              // Initialize pq with 0, weight 0.
+    distancias[0] = 0;              // Inicializamos la distancia al vertice 0 con 0.
+    pq.push(0, 0);              // Inicializamos el monticulo.
     
-    while (!pq.empty())
+    while (!pq.empty()) // Mientras el monticulo no este vacio.
     {
-        int a = (pq.top()).elem;
-        pq.pop();
-        visit(G, a,marked,edgeTo,distTo,pq);       // Add closest vertex to tree.
+        int a = (pq.top()).elem; // Cogemos el menor elemento.
+        pq.pop(); // Sacamos el elemento del monticulo.
+        visitar(G,a,marked,distancias,pq,aristas);       // Visitamos ese vertice. Coste O(numero de aristas*log(numero de vertices)).
     }
+    
+    
     int resultado = 0;
-
-    
-    for (int i = 0; i < G.V(); i++){
+    // Recorremos el vector con las distancias de vertices. Coste O(numero de vertices).
+    for (int i = 0; i < G.V(); i++)
+    {
         if(marked[i]==true)
-            resultado += distTo[i];
+            resultado += distancias[i]; // Sumamos las distancias para obtener el coste total.
         else
-            return 0;
+            return 0;               // Si hay algun nodo no visitado devolvemos 0;
     }
-
-    
 
     return resultado;
     
 }
 
-
-
-
+// Metodo que se encarga de la resolucion del caso.
+// Recoge la entrada del usuario, inicializa las variables y llama a la funcion que devuelve el coste del arbol recubridor de coste minimo.
+// Coste O(numero de aristas*log(numero de vertices)).
 
 bool resuelveCaso()
 {
@@ -97,8 +112,8 @@ bool resuelveCaso()
         grafo.ponArista(arista);
     }
     
-    if(primMST(grafo)>0){
-        std::cout<<primMST(grafo)<<"\n";
+    if(primVoraz(grafo)>0){
+        std::cout<<primVoraz(grafo)<<"\n";
     }
     else
         std::cout<<"Imposible\n";
@@ -106,6 +121,11 @@ bool resuelveCaso()
     return true;
 
 }
+
+// Metodo principal, contiene un bucle que llama a la funcion resuelveCaso.
+// Esta devuelve true mientras haya casos por resolver.
+// Coste O(numero de aristas*log(numero de vertices)).
+
 int main()
 {
     while(resuelveCaso());

@@ -1,13 +1,23 @@
+//  TAIS08 , Rubén Gómez y Daniel Lago
+//
+//  Ejercicio 14 - Deteccion de manchas negras.
+//
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Resumen de solucion:
+ Recibimos una matriz de booleanos donde true indica que hay una mancha.
+ Recorremos la matriz desde la posicion 0,0 a la n-1,n-1 y creamos aristas que conectan una mancha con otra mancha a su derecha y debajo suya.
+ Recorremos el grafo generado y contamos el numero de manchas que hay en cada componente, si este es mayor al maximo, lo actualizamos. 
+ 
+ Coste O(filas*columnas).
  */
-
 
 #include "Grafo.h"
 #include "Manchas.h"
 #include <string.h>
+
+// Metodo que se encarga de la resolucion del caso.
+// Recoge la entrada del usuario, inicializa las variables y llama a la funcion que devuelve el mayor numero de manchas.
+// Coste O(filas*columnas).
 
 bool resuelveCaso()
 {
@@ -25,21 +35,26 @@ bool resuelveCaso()
     std::cin.ignore();
     
     std::string linea;
+    // Coste O(filas*columnas).
     for(int i = 0; i < f; i++)
     {
         std::getline(std::cin,linea);
         
         for(int j = 0; j < co; j++)
         {
-            mapa[i][j] = (linea[j] == '#'); 
+            mapa[i][j] = (linea[j] == '#'); // mapa[i][j] es true si existe una mancha.
         }
     }
-
-    Manchas m = Manchas(mapa,f,co);
+    
+    Manchas m = Manchas(mapa,f,co); // Coste O(filas*columnas).
     std::cout << m.mayorNumeroManchas() << "\n";
     
     return true;
 }
+// Metodo principal,contiene un bucle que llama a la funcion resuelveCaso.
+// resuelveCaso devuelve true siempre que haya otro caso a resolver.
+// Coste O(filas*columnas).
+
 int main()
 {
     while(resuelveCaso());

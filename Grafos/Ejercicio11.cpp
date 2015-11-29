@@ -1,11 +1,22 @@
+//  TAIS08 , Rubén Gómez y Daniel Lago
+//
+//  Ejercicio 11 - Grafo Bipartito.
+//
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Resumen de solucion:
+ Recorremos el grafo realizando una búsqueda en profundidad.
+ Segun pasamos por cada nodo le ponemos un color distinto al color del nodo del que venimos.
+ Si nos encontramos un nodo que ya esta coloreado y es igual al color de nuestro nodo actual, el grafo no es bipartito.
+ 
+ Coste O(numero de vertices + numero de aristas).
  */
 
 #include "ArbolBipartito.h"
 #include "Grafo.h"
+
+// Metodo que se encarga de la resolucion del caso.
+// Hace uso de la clase ArbolBipartito para saber si el grafo es bipartito o no.
+// Coste O((numero de vertices + numero de aristas).
 
 bool resuelveCaso()
 {
@@ -15,6 +26,7 @@ bool resuelveCaso()
         return false;
     std::cin >> A; // número de aristas
     Grafo grafo(V);
+    
     // leemos las aristas
     for (int i = 0; i < A; ++i)
     {
@@ -31,10 +43,12 @@ bool resuelveCaso()
     
     return true;
 }
+// Metodo principal, contiene un bucle que llama a la funcion resuelveCaso.
+// Esta devuelve true mientras haya casos por resolver.
+// Coste O(numero de vertices + numero de aristas).
 
-/*
 int main()
 {
     while(resuelveCaso());
     return 0;
-}*/
+}

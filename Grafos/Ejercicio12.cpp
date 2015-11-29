@@ -1,11 +1,23 @@
+//  TAIS08 , Rubén Gómez y Daniel Lago
+//
+//  Ejercicio 12 - Arborescencias.
+//
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Resumen de solucion:
+ Para encontrar la raiz damos la vuelta a las aristas del grafo, de forma que si existe una raiz esta sera alcanzable desde
+ cualquier nodo y su numero de adyacentes en el grafo inverso sera 0.
+ Una vez encontrada la raiz hacemos dfs para comprobar que sea conexo y que exista un solo camino para llegar a cada uno de los nodos.
+ Es arborescencia si tiene una raiz y desde ella podemos acceder a todos los nodos de una unica forma.
+ 
+ Coste O(numero de vertices + numero de aristas).
  */
 
 #include "GrafoDirigido.h"
 #include "Arborescencia.h"
+
+// Metodo que se encarga de la resolucion del caso.
+// Hace uso de la clase Arborescencia para saber si el grafo es arborescente o no.
+// Coste O((numero de vertices + numero de aristas).
 
 bool resuelveCaso()
 {  
@@ -31,6 +43,10 @@ bool resuelveCaso()
     
     return true;
 }
+// Metodo principal, contiene un bucle que llama a la funcion resuelveCaso.
+// Esta devuelve true mientras haya casos por resolver.
+// Coste O(numero de vertices + numero de aristas).
+
 int main()
 {
     while(resuelveCaso());

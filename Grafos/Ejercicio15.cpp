@@ -1,15 +1,14 @@
+//  TAIS08 , Rubén Gómez y Daniel Lago
 //
-//  Ejercicio15.cpp
-//  Ejercicio1
+//  Ejercicio 15 - Deteccion de manchas negras crecientes.
 //
-//  Created by Rubén Gómez on 23/11/15.
-//  Copyright © 2015 Rubén Gómez. All rights reserved.
-//
-
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Resumen de solucion:
+ Recibimos una matriz de booleanos donde true indica que hay una mancha.
+ Recorremos la matriz desde la posicion 0,0 a la n-1,n-1 y creamos aristas que conectan una mancha con otra mancha a su derecha y debajo suya.
+ Recorremos el grafo generado y contamos el numero de manchas que hay en cada componente, si este es mayor al maximo, lo actualizamos. 
+ 
+ Coste O(filas*columnas).
  */
 
 #include "Grafo.h"

@@ -43,6 +43,14 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="Grafos" projectFiles="true">
+        <itemPath>Grafos/Ejercicio10.cpp</itemPath>
+        <itemPath>Grafos/Ejercicio11.cpp</itemPath>
+        <itemPath>Grafos/Ejercicio12.cpp</itemPath>
+        <itemPath>Grafos/Ejercicio13.cpp</itemPath>
+        <itemPath>Grafos/Ejercicio14.cpp</itemPath>
+        <itemPath>Grafos/Ejercicio15.cpp</itemPath>
+        <itemPath>Grafos/Ejercicio16.cpp</itemPath>
+        <itemPath>Grafos/Ejercicio17.cpp</itemPath>
         <itemPath>Grafos/Ejercicio18.cpp</itemPath>
         <itemPath>Grafos/Grafo.cpp</itemPath>
         <itemPath>Grafos/GrafoDirigido.cpp</itemPath>
@@ -98,17 +106,33 @@
       </item>
       <item path="Grafos/ConjuntosDisjuntos.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Grafos/Ejercicio10.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Grafos/Ejercicio10.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio11.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Grafos/Ejercicio11.txt" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Grafos/Ejercicio12.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Grafos/Ejercicio12.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio13.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Grafos/Ejercicio13.txt" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Grafos/Ejercicio14.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Grafos/Ejercicio14.txt" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Grafos/Ejercicio15.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Grafos/Ejercicio15.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio16.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio17.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Grafos/Ejercicio18.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -139,10 +163,6 @@
       <item path="TADS/HashMap.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Voraces/Ejercicio19.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Voraces/Ejercicio21.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Voraces/PriorityQueue.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -173,17 +193,33 @@
       </item>
       <item path="Grafos/ConjuntosDisjuntos.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Grafos/Ejercicio10.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Grafos/Ejercicio10.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio11.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Grafos/Ejercicio11.txt" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Grafos/Ejercicio12.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Grafos/Ejercicio12.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio13.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Grafos/Ejercicio13.txt" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Grafos/Ejercicio14.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Grafos/Ejercicio14.txt" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Grafos/Ejercicio15.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Grafos/Ejercicio15.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio16.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Grafos/Ejercicio17.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Grafos/Ejercicio18.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -214,10 +250,6 @@
       <item path="TADS/HashMap.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Voraces/Ejercicio19.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Voraces/Ejercicio21.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Voraces/PriorityQueue.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
