@@ -21,7 +21,7 @@
 
 // Metodo que recorre las aristas adyacentes y selecciona aquellas que tenga un mejor coste.
 // Tambien tiene en cuenta cuantas veces se ha pasado por los nodos usando los caminos optimos.
-// Coste O(numero de aristas*log(numero de vertices)).
+// Coste O(log(numero de vertices)).
 
 void relajar(AristaDirigida<int> e,std::vector<int> &distTo,std::vector<AristaDirigida<int>> &edgeTo,IndexPQ<int> &pq,std::vector<int> &pisados,int d)
 {
@@ -76,7 +76,7 @@ int dijkstra(GrafoDirigidoValorado<int> G, int s,std::vector<AristaDirigida<int>
         int v = (pq.top()).elem; // Sacamos el menor elemento.
         pq.pop(); // Sacamos el elemento del monticulo.
         for (auto e : G.adj(v)) // Recorremos todos sus vertices adyacentes.
-            relajar(e,distTo,edgeTo,pq,pisados,G.V()-1); // Llamamos a relajar para actualizar las distancias y contar las pisadas. Coste O(numero de aristas*log(numero de vertices)).
+            relajar(e,distTo,edgeTo,pq,pisados,G.V()-1); // Llamamos a relajar para actualizar las distancias y contar las pisadas. Coste O(log(numero de vertices)).
     }
     
     int nCaminos = 1;

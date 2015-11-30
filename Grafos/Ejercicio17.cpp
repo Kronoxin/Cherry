@@ -19,7 +19,6 @@
 #include <limits>
 
 // Metodo que recorre las aristas adyacentes y selecciona aquellas que tenga un mejor coste.
-// Coste O(numero de aristas*log(numero de vertices)).
 void relajar(AristaDirigida<int> aristaActual,std::vector<int> &distTo,std::vector<AristaDirigida<int>> &aristas,IndexPQ<int> &pq)
 {
     size_t origen = aristaActual.from();
@@ -69,7 +68,7 @@ std::vector<int> &dijkstra(GrafoDirigidoValorado<int> G, int s, std::vector<Aris
         int v = (pq.top()).elem; // Cogemos el menor elemento.
         pq.pop(); // Lo sacamos del monticulo.
         for (auto e : G.adj(v)) // recorremos los vertices adyacentes.
-            relajar(e,distTo,aristas,pq); // Llamamos a relajar para actualizar las distancias. Coste O(numero de aristas*log(numero de vertices)).
+            relajar(e,distTo,aristas,pq); // Llamamos a relajar para actualizar las distancias. Coste O(log(numero de vertices)).
     }
     
     return distTo;

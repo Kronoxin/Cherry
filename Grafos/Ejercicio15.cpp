@@ -5,16 +5,18 @@
 /*
  Resumen de solucion:
  Recibimos una matriz de booleanos donde true indica que hay una mancha.
- Recorremos la matriz desde la posicion 0,0 a la n-1,n-1 y creamos aristas que conectan una mancha con otra mancha a su derecha y debajo suya.
- Recorremos el grafo generado y contamos el numero de manchas que hay en cada componente, si este es mayor al maximo, lo actualizamos. 
- 
- Coste O(filas*columnas).
+ Recorremos la matriz y unimos los vertices de los conjuntos disjuntos.
+ Coste O((f*c) + inserciones).
  */
+
 
 #include "Grafo.h"
 #include "ManchasCrecientes.h"
  
- //Conjuntos disjuntos
+ // Metodo que se encarga de la resolucion del caso.
+// Recoge la entrada del usuario e inicializa las variables.
+// Si nos llega un simbolo # se considera una mancha.
+// Coste O((f*c) + inserciones).
 
 bool resuelveCaso()
 {
@@ -28,32 +30,37 @@ bool resuelveCaso()
     
     std::cin >> co; // número de columnas
     
-    Matriz<bool> mapa = Matriz<bool>(f,co);
+    Matriz<bool> mapa(f,co);
     
     //Ignoramos el \n
     std::cin.ignore();
     
     std::string linea;
+    // Recorremos todos los caracteres.
+    // Coste O(numero de caracteres.)
     for(int i = 0; i < f; i++)
     {
         std::getline(std::cin,linea);
         
         for(int j = 0; j < co; j++)
         {
-            mapa[i][j] = (linea[j] == '#');
+            mapa[i][j] = (linea[j] == '#'); // Si es igual a # se considera una mancha.
         }
     }
-    
-    ManchasCrecientes m = ManchasCrecientes(mapa,f,co);
+    // Coste O(f*c).
+    ManchasCrecientes m(mapa,f,co);
     
     unsigned int inserciones;
     
     std::cin >> inserciones;
+    // Por cada nueva insercion.
+    // Coste O(inserciones)
     for (unsigned int i = 0; i < inserciones; i++)
     {
         int fila,columna;
         std::cin >> fila;
         std::cin >> columna;
+        // Coste O(1)
         m.actualizarManchas(fila-1,columna-1);
         
         std::cout << m.mayorNumeroManchas();
@@ -72,6 +79,11 @@ bool resuelveCaso()
     
     return true;
 }
+
+// Metodo principal, contiene un bucle que llama a la funcion resuelveCaso.
+// Esta devuelve true mientras haya casos por resolver.
+// Coste O(f*c).
+
 int main()
 {
     while(resuelveCaso());

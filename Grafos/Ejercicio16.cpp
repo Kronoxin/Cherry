@@ -19,7 +19,7 @@
 
 // Metodo que recorre las adyacentes de un nodo y comprueba si se ha llegado por un camino mejor al nodo.
 // En ese caso selecciona la arista actual y la mete en la cola, o la actualiza si ya existe.
-// Coste O(numero de aristas*log(numero de vertices)).
+
 void visitar(const GrafoValorado<int> &G, int v,std::vector<bool> &marked,std::vector<int> &distancias,IndexPQ<int> &pq,std::vector<Arista<int>> &aristas){
 
     marked[v] = true;
@@ -73,7 +73,7 @@ int primVoraz(GrafoValorado<int> G)
     {
         int a = (pq.top()).elem; // Cogemos el menor elemento.
         pq.pop(); // Sacamos el elemento del monticulo.
-        visitar(G,a,marked,distancias,pq,aristas);       // Visitamos ese vertice. Coste O(numero de aristas*log(numero de vertices)).
+        visitar(G,a,marked,distancias,pq,aristas);       // Visitamos ese vertice.
     }
     
     

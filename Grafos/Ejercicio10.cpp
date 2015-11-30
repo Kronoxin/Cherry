@@ -36,7 +36,7 @@ bool resuelveCaso()
     }
     
     //  Coste O(numero de vertices + numero de aristas).
-    ArbolLibre arbol = ArbolLibre(grafo);
+    ArbolLibre arbol(grafo);
     
     if(arbol.grafoLibre())
         std::cout << "SI\n";

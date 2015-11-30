@@ -10,7 +10,7 @@
  Por cada nodo asignamos el esfuerzo o distancia que hemos recorrido para llegar hasta el.
  La distancia asignada a cada nodo tras recorrerlo sera la minima distancia posible para llegar hasta ese nodo.
  
- Coste O(numero de vertices + numero de aristas).
+ Coste O(numero de casillas del tablero * numero de caras del dado).
  */
 
 #include <iostream>
@@ -18,7 +18,7 @@
 #include <queue>
 
 // Funcion que devuelve el menor numero de tiradas del dado necesarias para ganar.
-// Coste O(numero de vertices + numero de aristas).
+// Coste O(numero de casillas del tablero * numero de caras del dado).
 int minimoNumeroDeTiradas(const std::vector<int> &atajos, int s, std::vector<bool> &marked,int carasDado, std::vector<int> &distTo,int tamTablero)
 {
     std::queue<size_t> q; // Declaramos una cola para ir insertando los vertices.
@@ -56,7 +56,7 @@ int minimoNumeroDeTiradas(const std::vector<int> &atajos, int s, std::vector<boo
 
 // Metodo que se encarga de la resolucion del caso.
 // Recoge la entrada del usuario, inicializa las variables y llama a la funcion que devuelve el numero minimo de tiradas.
-// Coste O(numero de vertices + numero de aristas).
+// Coste O(numero de casillas del tablero * numero de caras del dado).
 void resuelveCaso()
 {
     int tamTablero,carasDado,numSerpientes,numEscaleras;
@@ -85,7 +85,7 @@ void resuelveCaso()
     std::vector<int> disTo(tamTablero*tamTablero,0);
     
     // Imprimimos el numero minimo de tiradas.
-    // Coste O((numero de vertices + numero de aristas).
+    // Coste O(numero de casillas del tablero * numero de caras del dado).
     std::cout << minimoNumeroDeTiradas(atajos,0,marked,carasDado,disTo,tamTablero) << "\n";
     std::cin >> tamTablero;
     }
@@ -93,7 +93,7 @@ void resuelveCaso()
 }
 
 // Metodo principal, llama a la funcion resuelveCaso.
-// Coste O(numero de vertices + numero de aristas).
+// Coste O(numero de casillas del tablero * numero de caras del dado).
 
 int main()
 {

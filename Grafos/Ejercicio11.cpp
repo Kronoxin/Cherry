@@ -34,7 +34,7 @@ bool resuelveCaso()
         grafo.ponArista(v,w);
     }
     
-    ArbolBipartito arbol = ArbolBipartito(grafo);
+    ArbolBipartito arbol(grafo);
     
     if(arbol.grafoBipartito())
         std::cout << "SI\n";

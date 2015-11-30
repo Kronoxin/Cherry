@@ -46,7 +46,7 @@ bool resuelveCaso()
         }
     }
     
-    Manchas m = Manchas(mapa,f,co); // Coste O(filas*columnas).
+    Manchas m(mapa,f,co); // Coste O(filas*columnas).
     std::cout << m.mayorNumeroManchas() << "\n";
     
     return true;

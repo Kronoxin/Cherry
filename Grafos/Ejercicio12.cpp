@@ -34,7 +34,7 @@ bool resuelveCaso()
         grafo.ponArista(v,w);
     }
     
-    Arborescencia arbol = Arborescencia(grafo);
+    Arborescencia arbol(grafo);
     
     if(arbol.grafoArborescente())
         std::cout << "SI " << arbol.raiz() << "\n";
