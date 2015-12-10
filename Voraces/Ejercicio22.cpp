@@ -6,43 +6,56 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <vector>
 #include "PriorityQueue.h"
-#include <cmath>
+/*
+//QuickSort Invertido - De Mayor a menor
+void particion ( std::vector<long long> &v, int a, int b, int & p) {
 
-bool resuelveCaso()
-{
-    long long nCasos,nPilas,voltajeMin, altura, longitud;
-    
-    std::cin >> nCasos; // numero de casos de prueba
-   
-    
-    
-    for(long long i = 0; i < nCasos; i++)
+    int i, j;
+    long long aux;
+    i = a+1;
+    j = b;
+    while ( i <= j ) 
     {
-        std::cin >> nPilas; //numero de pilas
-        std::cin >> voltajeMin; // voltaje mínimo
-        for(long long i = 0; i < nPilas; i++)
+        if ( (v[i] < v[a]) && (v[j] > v[a]) ) 
         {
-            PriorityQueue<int,std::greater<long long>> monMax(nPilas);
-            PriorityQueue<int,std::less<long long>> monMin(nPilas);
-            int a;
-            
-            std::cin >> a;
-            monMax.push(a);
-            monMin.push(a);
-
-            
+            aux = v[i]; 
+            v[i] = v[j]; 
+            v[j] = aux;
+            i = i + 1; 
+            j = j - 1;
+        }
+        else 
+        {
+            if ( v[i] >= v[a] ) 
+                i = i + 1;
+            if ( v[j] <= v[a] ) 
+                j = j - 1;
         }
     }
-    
-   
-    
-    
-    
-    return true;
+    p = j;
+    aux = v[a]; 
+    v[a] = v[p]; 
+    v[p] = aux;
+
 }
 
-int resuelve(PriorityQueue<int,std::greater<long long>> &monMax , PriorityQueue<int,std::less<long long>> &monMin){
+void quickSortAux( std::vector<long long> &v, int a, int b) {
+	int p;
+        
+	if ( a <= b )
+        {
+		particion(v, a, b, p);
+		quickSortAux(v, a, p-1);
+		quickSortAux(v, p+1, b);
+	}
+}
+void quickSort ( std::vector<long long> &v, int n) {
+    quickSortAux(v, 0, n-1);
+}
+*/
+long resuelve(const std::vector<long> &pilas, long volMin){
     
     /*
      * 15 12 10 8 
@@ -51,15 +64,67 @@ int resuelve(PriorityQueue<int,std::greater<long long>> &monMax , PriorityQueue<
      * 
      *   */
     
-    
-    while (exp) {
-
+    long i = 0;
+    long j = pilas.size()-1;
+    long nCoches = 0;
+    while (i < j) 
+    {
+        if(pilas[i] + pilas[j] >= volMin)
+        {
+            i++;
+            j--;
+            nCoches++;
+        }
+        else
+        {
+            j--;
+        }
     }
+    return nCoches;
 
-    
 }
+
+void resuelveCaso()
+{
+    long nCasos;
+    long nPilas;
+    long voltajeMin;
+    
+    std::cin >> nCasos; // numero de casos de prueba
+   
+    
+    
+    for(long i = 0; i < nCasos; i++)
+    {
+        std::cin >> nPilas; //numero de pilas
+        std::cin >> voltajeMin; // voltaje mínimo
+        std::vector<long> pilas(nPilas);
+        PriorityQueue<long,std::greater<long>> pilasMon(nPilas);
+        for(long i = 0; i < nPilas; i++)
+        {
+
+            long a;
+            
+            std::cin >> a;
+            pilasMon.push(a);
+
+            
+        }
+        //quickSort(pilas,pilas.size());
+        for (long a = 0; a < nPilas;a++)
+        {
+            pilas[a] = pilasMon.top();
+            pilasMon.pop();
+        }
+        
+        std::cout << resuelve(pilas,voltajeMin) << std::endl;
+    }
+}
+
+
+
 int main()
 {
-    while(resuelveCaso());
+    resuelveCaso();
     return 0;
 }
