@@ -51,7 +51,7 @@
         <itemPath>Grafos/GrafoDirigido.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="Voraces" projectFiles="true">
-        <itemPath>Voraces/Ejercicio22.cpp</itemPath>
+        <itemPath>Voraces/Ejercicio23.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -146,7 +146,7 @@
       </item>
       <item path="Voraces/Ejercicio19.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Voraces/Ejercicio22.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Voraces/Ejercicio23.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -221,7 +221,7 @@
       </item>
       <item path="Voraces/Ejercicio19.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Voraces/Ejercicio22.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Voraces/Ejercicio23.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>
