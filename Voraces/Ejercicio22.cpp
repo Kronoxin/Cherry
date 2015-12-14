@@ -2,59 +2,13 @@
 //
 //  Ejercicio 22 - Carreras de coches.
 //
-/*
+
 
 #include <stdio.h>
 #include <iostream>
 #include <vector>
 #include "PriorityQueue.h"
-/*
-//QuickSort Invertido - De Mayor a menor
-void particion ( std::vector<long long> &v, int a, int b, int & p) {
 
-    int i, j;
-    long long aux;
-    i = a+1;
-    j = b;
-    while ( i <= j ) 
-    {
-        if ( (v[i] < v[a]) && (v[j] > v[a]) ) 
-        {
-            aux = v[i]; 
-            v[i] = v[j]; 
-            v[j] = aux;
-            i = i + 1; 
-            j = j - 1;
-        }
-        else 
-        {
-            if ( v[i] >= v[a] ) 
-                i = i + 1;
-            if ( v[j] <= v[a] ) 
-                j = j - 1;
-        }
-    }
-    p = j;
-    aux = v[a]; 
-    v[a] = v[p]; 
-    v[p] = aux;
-
-}
-
-void quickSortAux( std::vector<long long> &v, int a, int b) {
-	int p;
-        
-	if ( a <= b )
-        {
-		particion(v, a, b, p);
-		quickSortAux(v, a, p-1);
-		quickSortAux(v, p+1, b);
-	}
-}
-void quickSort ( std::vector<long long> &v, int n) {
-    quickSortAux(v, 0, n-1);
-}
-*/
 long resuelve(const std::vector<long> &pilas, long volMin){
     
     /*

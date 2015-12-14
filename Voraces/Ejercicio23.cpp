@@ -5,24 +5,39 @@
 
 #include <stdio.h>
 #include <vector>
-#include "IndexPQ.h"
+#include "PriorityQueue.h"
 
+struct Peliculas
+{
+    int inicio;
+    int fin;
+};
 
-int resuelve(IndexPQ<int> &listaPeliculas)
+struct menorPelis
+{
+    bool operator()(Peliculas const &p1, Peliculas const &p2)
+    {
+        return p1.inicio < p2.inicio;
+    }
+    
+};
+int resuelve(PriorityQueue<Peliculas,menorPelis> &listaPeliculas)
 {
     int hia,hfa,hiac,hfac;
-    hia = listaPeliculas.top().prioridad;
-    hfa = listaPeliculas.top().elem;
+    Peliculas peli = listaPeliculas.top();
+    hia = peli.inicio;
+    hfa = peli.fin;
     
     listaPeliculas.pop();
     
     int numeroPelisVisionables = 1;
     
-    while(!listaPeliculas.empty()) 
+    while(!listaPeliculas.empty())
     {
-        hiac = listaPeliculas.top().prioridad;
-        hfac = listaPeliculas.top().elem;
-    
+        Peliculas peli = listaPeliculas.top();
+        hiac = peli.inicio;
+        hfac = peli.fin;
+        
         listaPeliculas.pop();
         
         if (hfa <= hiac-10) // Si el principio de la siguiente pelicula es posterior al final de la pelicula anterior, caben las dos peliculas.
@@ -48,7 +63,7 @@ bool resuelveCaso()
     if(nPeliculas == 0)
         return false;
     
-    IndexPQ<int> listaPeliculas(24*60+1);
+    PriorityQueue<Peliculas,menorPelis> listaPeliculas(nPeliculas);
     
     
     
@@ -56,16 +71,18 @@ bool resuelveCaso()
     {
         
         int hh, mm, duracion; char c;
-
+        
         std::cin >> hh >> c >> mm;  // el char lee los dos puntos
         std::cin >> duracion;
-        
-        hh = hh*60 + mm;
-        size_t fin = hh+duracion;
-        listaPeliculas.push(fin,hh);
+        hh = hh*60+mm;
+        Peliculas p;
+        p.inicio = hh;
+        p.fin = hh+duracion;
+        listaPeliculas.push(p);
         
     }
     std::cout << resuelve(listaPeliculas) << std::endl;
+    
     return true;
     
 }
