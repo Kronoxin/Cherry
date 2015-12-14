@@ -1,10 +1,13 @@
+//  TAIS08 , Rubén Gómez y Daniel Lago
 //
-//  Ejercicio24.cpp
-//  Ejercicio1
+//  Ejercicio 24 - Planificación de conferencias
 //
-//  Created by Rubén Gómez on 11/12/15.
-//  Copyright © 2015 Rubén Gómez. All rights reserved.
-//
+/*
+ Resumen de solucion:
+
+ 
+ Coste O().
+ */
 
 #include <stdio.h>
 #include "PriorityQueue.h"

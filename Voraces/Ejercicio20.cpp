@@ -1,40 +1,55 @@
+//  TAIS08 , Rubén Gómez y Daniel Lago
 //
-//  Ejercicio20.cpp
-//  Ejercicio1
+//  Ejercicio 20 - Esquiando en Alaska.
 //
-//  Created by Rubén Gómez on 27/11/15.
-//  Copyright © 2015 Rubén Gómez. All rights reserved.
-//
+/*
+ Resumen de solucion:
+ * Ordenamos las alturas y la longitud de los esquis de menor a mayor y hacemos la suma de las diferencias.
+
+ 
+ Coste O(numero de esquiadores * log(numero de esquiadores)).
+ */
 
 #include <stdio.h>
 #include <iostream>
 #include "PriorityQueue.h"
 #include <cmath>
 
+// Metodo que se encarga de la resolucion del caso.
+// Recoge la entrada del usuario e inicializa las variables.
+// Ordenamos las alturas y la longitud de los esquis de menor a mayor y hacemos la suma de las diferencias. 
+// Coste O(numero de esquiadores * log(numero de esquiadores)).
+
 bool resuelveCaso()
 {
-    long long e, altura, longitud;
+    long e, altura, longitud;
     
     std::cin >> e; // numero de esquiadores
     
     if (e==0)  // hemos terminado de procesar todos los casos
         return false;
     
-    PriorityQueue<long long> esquiadores(e);
-    PriorityQueue<long long> esquis(e);
+    PriorityQueue<long> esquiadores(e); 
+    PriorityQueue<long> esquis(e);
     
-    for(long long i = 0; i < e; i++)
+    // O(numero de esquiadores*log(numero de esquiadores))
+    for(long i = 0; i < e; i++)
     {
         std::cin >> altura;
+        // O(log(numero de esquiadores)
         esquiadores.push(altura);
     }
-    for(long long i = 0; i < e; i++)
+    // O(numero de esquiadores*log(numero de esquiadores))
+    for(long i = 0; i < e; i++)
     {
         std::cin >> longitud;
+        // O(log(numero de esquiadores))
         esquis.push(longitud);
     }
-    long long diferenciaMinima = 0;
+    long diferenciaMinima = 0;
     
+    // Mientras queden esquiadores, calculamos la diferencia minima.
+    // O(numero de esquiadores)
     while(!esquiadores.empty())
     {
         diferenciaMinima += std::abs(esquiadores.top() - esquis.top());
@@ -47,6 +62,11 @@ bool resuelveCaso()
     
     return true;
 }
+
+// Metodo principal, contiene un bucle que llama a la funcion resuelveCaso.
+// Esta devuelve true mientras haya casos por resolver.
+// Coste O(numero de esquiadores*log(numero de esquiadores)).
+
 int main()
 {
     while(resuelveCaso());

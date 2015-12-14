@@ -2,6 +2,12 @@
 //
 //  Ejercicio 23 - Maratón de cine de terror
 //
+/*
+ Resumen de solucion:
+
+ 
+ Coste O().
+ */
 
 #include <stdio.h>
 #include <vector>
