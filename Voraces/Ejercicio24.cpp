@@ -4,9 +4,14 @@
 //
 /*
  Resumen de solucion:
+ * Vamos recorriendo los intervalos ordenados por inicio de la conferencia de menor a mayor.
+ * Metemos el final del primer intervalo en un monticulo de minimos.
+ * Si el principio del siguiente intervalo es superior al minimo del monticulo de minimos
+ * entonces podemos meterlo en esa sala y metemos en el monticulo de minimos el final de ese intervalo.
+ * Si no lo es se debe añadir una sala nueva y metemos el final del intervalo al monticulo de minimos.
 
  
- Coste O().
+ Coste O(numero de conferencias * log(numero de conferencias)).
  */
 
 #include <stdio.h>
@@ -27,36 +32,37 @@ struct menorConferencia
     
 };
 
+// Coste O(numero de conferencias * log(numero de conferencias)).
 int resuelve(PriorityQueue<Conferencia,menorConferencia> &listaConferencias)
 {
-    int nSalasNecesarias = 1;
+    int nSalasNecesarias = 1; // Como minimo necesitaremos una sala.
     int inicioA,finA,inicioAc,finAc;
     
     PriorityQueue<int> minFinales(listaConferencias.size());
-    Conferencia c = listaConferencias.top();
+    Conferencia c = listaConferencias.top(); // Cogemos la primera conferencia.
     inicioA = c.inicio;
     finA = c.fin;
     listaConferencias.pop();
     
-    minFinales.push(finA);
+    minFinales.push(finA); // metemos su final en la lista
     
-    while (!listaConferencias.empty())
+    while (!listaConferencias.empty()) // Mientras siga habiendo conferencias.
     {
-        Conferencia c = listaConferencias.top();
+        Conferencia c = listaConferencias.top(); // Cogemos la conferencia actual.
         inicioAc = c.inicio;
         finAc = c.fin;
         listaConferencias.pop();
         
 
-        if( minFinales.top() <= inicioAc) // puedo meter la conferencia en la misma sala.
+        if( minFinales.top() <= inicioAc) // Si puedo meter la conferencia en la misma sala.
         {
-            minFinales.push(finAc);
+            minFinales.push(finAc); // Meto el final de la conferencia actual.
             minFinales.pop();        // Como lo meto en la misma sala, saco el minimo anterior.
         }
         else if (inicioAc < minFinales.top()) // no entra en ninguna de las salas.
         {
-            nSalasNecesarias++;
-            minFinales.push(finAc);
+            nSalasNecesarias++; // Necesito otra sala mas.
+            minFinales.push(finAc); // Meto el final de la conferencia actual.
         }
     }
     
@@ -64,7 +70,7 @@ int resuelve(PriorityQueue<Conferencia,menorConferencia> &listaConferencias)
     
     return nSalasNecesarias;
 }
-
+// O(numero de conferencias * log(numero de conferencias))
 bool resuelveCaso()
 {
     int nConferencias;
@@ -98,6 +104,9 @@ bool resuelveCaso()
     
 }
 
+// Metodo principal, contiene un bucle que llama a la funcion resuelveCaso.
+// Esta devuelve true mientras haya casos por resolver.
+// Coste O(numero de conferencias*log(numero de conferencias)).
 
 int main()
 {

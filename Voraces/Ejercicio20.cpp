@@ -5,8 +5,6 @@
 /*
  Resumen de solucion:
  * Ordenamos las alturas y la longitud de los esquis de menor a mayor y hacemos la suma de las diferencias.
-
- 
  Coste O(numero de esquiadores * log(numero de esquiadores)).
  */
 
@@ -49,12 +47,12 @@ bool resuelveCaso()
     long diferenciaMinima = 0;
     
     // Mientras queden esquiadores, calculamos la diferencia minima.
-    // O(numero de esquiadores)
+    // O(numero de esquiadores* log(numero de esquiadores))s
     while(!esquiadores.empty())
     {
         diferenciaMinima += std::abs(esquiadores.top() - esquis.top());
-        esquiadores.pop();
-        esquis.pop();
+        esquiadores.pop(); // O(log(numero de esquiadores))
+        esquis.pop();      // O(log(numero de esquiadores))
     }
     
     std::cout << diferenciaMinima << "\n";

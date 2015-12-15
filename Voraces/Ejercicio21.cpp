@@ -54,7 +54,7 @@ bool resuelveCaso()
         // O(log(numero de ciudades))
         defensores.push(unidades);
     }
-    // O(numero de ciudades)
+    // O(numero de ciudades*log(numero de ciudades))
     while(!atacantes.empty())
     {
         int atacante = atacantes.top();
@@ -62,11 +62,11 @@ bool resuelveCaso()
         if (defensor >= atacante) // Si la ciudad es defendible.
         {
             ciudadesDefendibles++; // La contabilizamos.
-            atacantes.pop(); // Sacamos a los atacantes.
-            defensores.pop(); // Sacamos a los defensores.
+            atacantes.pop(); // Sacamos a los atacantes. O(log(numero de ciudades))
+            defensores.pop(); // Sacamos a los defensores. O(log(numero de ciudades))
         }
         else
-            atacantes.pop(); // Si no es defendible solo sacamos a los atacantes.
+            atacantes.pop(); // Si no es defendible solo sacamos a los atacantes. O(log(numero de ciudades))
     }
     
     std::cout << ciudadesDefendibles << "\n";
