@@ -46,18 +46,16 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="f3"
+                     displayName="Entrenamiento AdaByron"
+                     projectFiles="true">
+        <itemPath>AdaByron/Hardwood Species.cpp</itemPath>
+      </logicalFolder>
       <logicalFolder name="f1" displayName="Grafos" projectFiles="true">
         <itemPath>Grafos/Grafo.cpp</itemPath>
         <itemPath>Grafos/GrafoDirigido.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="Voraces" projectFiles="true">
-        <itemPath>Voraces/Ejercicio19.cpp</itemPath>
-        <itemPath>Voraces/Ejercicio20.cpp</itemPath>
-        <itemPath>Voraces/Ejercicio21.cpp</itemPath>
-        <itemPath>Voraces/Ejercicio22.cpp</itemPath>
-        <itemPath>Voraces/Ejercicio23.cpp</itemPath>
-        <itemPath>Voraces/Ejercicio24.cpp</itemPath>
-        <itemPath>Voraces/Ejercicio25.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -100,6 +98,8 @@
           <standard>8</standard>
         </ccTool>
       </compileType>
+      <item path="AdaByron/Hardwood Species.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Grafos/ArbolBipartito.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/ArbolLibre.h" ex="false" tool="3" flavor2="0">
@@ -150,21 +150,7 @@
       </item>
       <item path="TADS/HashMap.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Voraces/Ejercicio19.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="Voraces/Ejercicio19.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Voraces/Ejercicio20.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Voraces/Ejercicio21.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Voraces/Ejercicio22.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Voraces/Ejercicio23.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Voraces/Ejercicio24.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Voraces/Ejercicio25.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -187,6 +173,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="AdaByron/Hardwood Species.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Grafos/ArbolBipartito.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafos/ArbolLibre.h" ex="false" tool="3" flavor2="0">
@@ -237,21 +225,7 @@
       </item>
       <item path="TADS/HashMap.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Voraces/Ejercicio19.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="Voraces/Ejercicio19.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Voraces/Ejercicio20.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Voraces/Ejercicio21.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Voraces/Ejercicio22.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Voraces/Ejercicio23.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Voraces/Ejercicio24.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Voraces/Ejercicio25.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>
