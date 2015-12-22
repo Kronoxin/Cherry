@@ -11,7 +11,6 @@ bool resuelveCaso()
 {
     int nCasos;
     char c ;
-    std::vector<std::string> vector(0);
     
     
     std::cin >> nCasos ; // leo el numero de casos.
@@ -21,19 +20,19 @@ bool resuelveCaso()
     
     std::string especie;
     
-    do {
-        std::getline(std::cin, especie);
-        if(especie !="")
-            vector.push_back(especie);
-        
-    } while (especie !="");
     
-    std::cout <<" He leido : " << std::endl;
-    for ( int i= 0 ; i< vector.size(); i++){
+    for ( int i = 0 ; i< nCasos; i++){
+        std::vector<std::string> vector(0);
+    
+        do {
+            
+            std::getline(std::cin, especie);
+            if(especie !="")
+                vector.push_back(especie);
         
-        std::cout << vector[i] << std::endl;
-        
+        } while (especie !="");
     }
+    
     
     
     return true;
