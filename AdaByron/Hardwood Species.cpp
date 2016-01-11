@@ -5,7 +5,7 @@
 #include <iomanip>
 using namespace std;
 
-
+/*
 void resuelveCaso()
 {
     int nCasos;
@@ -26,7 +26,7 @@ void resuelveCaso()
         map<string,short> nombreEspecies;
         long numeroArboles = 0;
         do
-        {
+         {
             
             std::getline(std::cin, especie);
             if(especie !="")
@@ -64,3 +64,4 @@ int main()
     resuelveCaso();
     return 0;
 }
+*/
